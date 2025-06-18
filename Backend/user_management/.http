@@ -1,0 +1,61 @@
+GET http://localhost:8080/manageUser/users
+
+HTTP/1.1 200  - OK
+content-type: application/json
+connection: close
+server: ballerina
+date: Wed, 18 Jun 2025 19:52:28 +0530
+content-encoding: gzip
+content-length: 139
+###
+POST http://localhost:8080/manageUser/users/insert
+Content-Type: application/json
+
+{
+    "ID" : 4, 
+    "FristName" : "Mihan",
+    "LastName" : "Perera", 
+    "Age" : 2
+
+}
+
+
+
+
+HTTP/1.1 201  - Created
+content-type: text/plain
+connection: close
+server: ballerina
+date: Wed, 18 Jun 2025 19:53:37 +0530
+content-encoding: gzip
+content-length: 33
+###
+PUT http://localhost:8080/manageUser/users/4/update
+Content-Type: application/json
+
+{ 
+    "FristName" : "Mihan",
+    "LastName" : "Perera", 
+    "Age" : 21
+
+}
+
+HTTP/1.1 200  - OK
+content-type: application/json
+connection: close
+server: ballerina
+date: Wed, 18 Jun 2025 19:53:27 +0530
+content-encoding: gzip
+content-length: 74
+###
+DELETE http://localhost:8080/manageUser/users/4/delete
+
+
+
+HTTP/1.1 200  - OK
+content-type: text/plain
+connection: close
+server: ballerina
+date: Wed, 18 Jun 2025 19:53:31 +0530
+content-encoding: gzip
+content-length: 47
