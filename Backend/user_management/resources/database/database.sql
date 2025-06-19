@@ -1,0 +1,9 @@
+USE user_management;
+
+CREATE TABLE `user` (
+  `ID` int NOT NULL ,
+  `FirstName` varchar(100) NOT NULL,
+  `LastName` varchar(100) NOT NULL,
+  `Age` int NOT NULL,
+  PRIMARY KEY (`sample_collection_id`)
+);
