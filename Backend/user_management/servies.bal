@@ -2,16 +2,16 @@ import ballerina/io;
 import ballerina/http;
 import ballerinax/mysql.driver as _;
 import ballerina/sql;
+import user_management.database;
 
 
 
 listener http:Listener httpListener = new (8080);
 
 service /manageUser on httpListener{
-    resource function get users/[int id]() returns User[]|sql:Error?|string{
+    resource function get users/[int id]() returns database:User[]|sql:Error?|string{
         io:println("Test");
-
-        User[]|sql:Error? result = getUsersById(id);
+        database:User[]|sql:Error? result = database:getUsersById(id);
 
         io:println("Test2");
         io:println(result);
@@ -26,13 +26,13 @@ service /manageUser on httpListener{
         
     }
 
-    resource function get users() returns User[]|sql:Error? {
-        User[] | sql:Error? result = getAllUsers();
+    resource function get users() returns database:User[]|sql:Error? {
+        database:User[] | sql:Error? result = database:getAllUsers();
         return result;
     }
 
-    resource function post users/insert(@http:Payload User user) returns string|error?{
-        string|error? result = inserUser(user);
+    resource function post users/insert(@http:Payload database:User user) returns string|error?{
+        string|error? result = database:inserUser(user);
 
         if result is error{
             return "Got an erro please check again";
@@ -43,14 +43,14 @@ service /manageUser on httpListener{
     }
 
 
-    resource function put users/[int ID]/update(@http:Payload UpdateUser user) returns User|error?{
+    resource function put users/[int ID]/update(@http:Payload database:UpdateUser user) returns database:User|error?{
         io:println(user.FristName);
         io:println(user.LastName);
         io:println(user.Age);
-        sql:ExecutionResult|error? result = updateUser(user, ID);
+        sql:ExecutionResult|error? result = database:updateUser(user, ID);
 
         if result is sql:ExecutionResult{
-            User response = {ID: ID, FristName: user.FristName, LastName: user.LastName, Age: user.Age};
+            database:User response = {ID: ID, FristName: user.FristName, LastName: user.LastName, Age: user.Age};
             return response;
         }else {
             return result;
@@ -58,7 +58,7 @@ service /manageUser on httpListener{
     }
 
     resource function delete users/[int ID]/delete() returns string|error?{
-        sql:ExecutionResult|error? result = deleteUser(ID);
+        sql:ExecutionResult|error? result = database:deleteUser(ID);
 
         if result is sql:ExecutionResult{
             return "Deleted Successfully!";

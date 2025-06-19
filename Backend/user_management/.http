@@ -4,39 +4,36 @@ HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 19:52:28 +0530
+date: Thu, 19 Jun 2025 11:04:16 +0530
 content-encoding: gzip
-content-length: 139
+content-length: 138
 ###
 POST http://localhost:8080/manageUser/users/insert
 Content-Type: application/json
 
 {
-    "ID" : 4, 
-    "FristName" : "Mihan",
-    "LastName" : "Perera", 
+    "ID" : 5, 
+    "FristName" : "Kalin",
+    "LastName" : "Dissanayake", 
     "Age" : 2
 
 }
-
-
-
 
 HTTP/1.1 201  - Created
 content-type: text/plain
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 19:53:37 +0530
+date: Thu, 19 Jun 2025 11:05:01 +0530
 content-encoding: gzip
 content-length: 33
 ###
-PUT http://localhost:8080/manageUser/users/4/update
+PUT http://localhost:8080/manageUser/users/5/update
 Content-Type: application/json
 
 { 
-    "FristName" : "Mihan",
-    "LastName" : "Perera", 
-    "Age" : 21
+    "FristName" : "Kalin",
+    "LastName" : "Dissanayake", 
+    "Age" : 25
 
 }
 
@@ -44,18 +41,16 @@ HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 19:53:27 +0530
+date: Thu, 19 Jun 2025 11:06:53 +0530
 content-encoding: gzip
-content-length: 74
+content-length: 80
 ###
-DELETE http://localhost:8080/manageUser/users/4/delete
-
-
+DELETE http://localhost:8080/manageUser/users/5/delete
 
 HTTP/1.1 200  - OK
 content-type: text/plain
 connection: close
 server: ballerina
-date: Wed, 18 Jun 2025 19:53:31 +0530
+date: Thu, 19 Jun 2025 11:07:10 +0530
 content-encoding: gzip
 content-length: 47

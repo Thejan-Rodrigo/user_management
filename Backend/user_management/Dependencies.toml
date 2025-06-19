@@ -379,6 +379,7 @@ dependencies = [
 	{org = "ballerinax", name = "mysql.driver"}
 ]
 modules = [
-	{org = "thejanrodrigo", packageName = "user_management", moduleName = "user_management"}
+	{org = "thejanrodrigo", packageName = "user_management", moduleName = "user_management"},
+	{org = "thejanrodrigo", packageName = "user_management", moduleName = "user_management.database"}
 ]
 
