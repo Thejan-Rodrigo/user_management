@@ -5,7 +5,7 @@ import ballerina/io;
 
 
 public function getUsersById(int Id) returns User[]|sql:Error?{
-    stream<User, sql:Error?> result = dbClient->query(`SELECT * FROM users WHERE ${Id}`);
+    stream<User, sql:Error?> result = dbClient->query(getUsersByIdQuery(Id));
     User[] users = [];
         
     io:println(result.forEach(function(User user){
@@ -16,7 +16,7 @@ public function getUsersById(int Id) returns User[]|sql:Error?{
 }
 
 public function getAllUsers() returns User[]|sql:Error?{
-    stream<User, sql:Error?> result = dbClient->query(`SELECT * FROM users`);
+    stream<User, sql:Error?> result = dbClient->query(getUsersQuery());
 
     User[] users = [];
         
@@ -29,13 +29,13 @@ public function getAllUsers() returns User[]|sql:Error?{
 }
 
 public function inserUser(User user) returns string|error?{
-    _= check dbClient->execute(`INSERT INTO users(ID, FristName, LastName, Age) VALUE (${user.ID}, ${user.FristName}, ${user.LastName}, ${user.Age})`);
+    _= check dbClient->execute(inserUserQuery(user));
     //stream<User, sql:Error?> result = dbClient->query(`INSERT INTO users(ID, FristName, LastName, Age) VALUE (${user.ID}, ${user.FristName}, ${user.LastName}, ${user.Age})`);
     return "Created";
 }
 
 public function updateUser(UpdateUser user, int ID) returns sql:ExecutionResult|error?{
-    sql:ExecutionResult|error? test = check dbClient->execute(`UPDATE users SET FristName = ${user.FristName}, LastName = ${user.LastName}, Age = ${user.Age} WHERE ID = ${ID}`);
+    sql:ExecutionResult|error? test = check dbClient->execute(updateUserQuery(user, ID));
     // io:println(user.FristName);
     // io:println(user.LastName);
     // io:println(user.Age);
@@ -44,6 +44,6 @@ public function updateUser(UpdateUser user, int ID) returns sql:ExecutionResult|
 
 public function deleteUser(int ID) returns sql:ExecutionResult|error?{
     io:println(ID);
-    sql:ExecutionResult|error? delete = check dbClient->execute(`DELETE FROM users WHERE ID = ${ID}`);
+    sql:ExecutionResult|error? delete = check dbClient->execute(deleteUserQuery(ID));
     return delete;
 }
