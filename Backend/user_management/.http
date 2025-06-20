@@ -4,9 +4,19 @@ HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Thu, 19 Jun 2025 12:30:13 +0530
+date: Fri, 20 Jun 2025 10:35:23 +0530
 content-encoding: gzip
 content-length: 139
+###
+GET http://localhost:8080/manageUser/users/2
+
+HTTP/1.1 200  - OK
+content-type: application/json
+connection: close
+server: ballerina
+date: Fri, 20 Jun 2025 10:35:47 +0530
+content-encoding: gzip
+content-length: 77
 ###
 POST http://localhost:8080/manageUser/users/insert
 Content-Type: application/json
@@ -23,7 +33,7 @@ HTTP/1.1 201  - Created
 content-type: application/json
 connection: close
 server: ballerina
-date: Thu, 19 Jun 2025 12:30:30 +0530
+date: Fri, 20 Jun 2025 10:35:51 +0530
 content-encoding: gzip
 content-length: 78
 ###
@@ -41,16 +51,16 @@ HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Thu, 19 Jun 2025 12:30:33 +0530
+date: Fri, 20 Jun 2025 10:36:02 +0530
 content-encoding: gzip
 content-length: 79
 ###
 DELETE http://localhost:8080/manageUser/users/6/delete
 
 HTTP/1.1 200  - OK
-content-type: text/plain
+content-type: application/json
 connection: close
 server: ballerina
-date: Thu, 19 Jun 2025 12:30:46 +0530
+date: Fri, 20 Jun 2025 10:36:07 +0530
 content-encoding: gzip
-content-length: 47
+content-length: 79

@@ -1,3 +1,4 @@
+import ballerina/http;
 type DatabaseConfig record {|
     int port;
     string host;
@@ -18,4 +19,12 @@ public type UpdateUser record {|
     string FristName;
     string LastName;
     int Age;
+|};
+
+public type UserNotFound record {|
+    *http:NotFound;
+
+    record {
+        string message;
+    }body;
 |};

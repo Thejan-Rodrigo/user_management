@@ -4,7 +4,7 @@ import ballerina/sql;
 import ballerina/io;
 
 
-public function getUsersById(int Id) returns User[]|sql:Error?{
+public function getUsersById(int Id) returns User|sql:Error?|string{
     stream<User, sql:Error?> result = dbClient->query(getUsersByIdQuery(Id));
     User[] users = [];
         
@@ -12,7 +12,13 @@ public function getUsersById(int Id) returns User[]|sql:Error?{
         users.push(user);
     }));
 
-    return users;
+    foreach User user in users {
+        if user.ID == Id{
+            return user;
+        }
+    }
+
+    return "User Not Found";
 }
 
 public function getAllUsers() returns User[]|sql:Error?{
@@ -42,8 +48,16 @@ public function updateUser(UpdateUser user, int ID) returns sql:ExecutionResult|
     return test;
 }
 
-public function deleteUser(int ID) returns sql:ExecutionResult|error?{
+public function deleteUser(int ID) returns error?|User|string{
     io:println(ID);
-    sql:ExecutionResult|error? delete = check dbClient->execute(deleteUserQuery(ID));
-    return delete;
+    User|sql:Error?|string isUser = getUsersById(ID);
+
+    if isUser is string{
+        return isUser;
+    }else if isUser is sql:Error {
+        return isUser;
+    } else {
+        _ = check dbClient->execute(deleteUserQuery(ID));
+        return isUser;
+    }
 }

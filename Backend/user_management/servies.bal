@@ -9,21 +9,20 @@ import user_management.database;
 listener http:Listener httpListener = new (8080);
 
 service /manageUser on httpListener{
-    resource function get users/[int id]() returns database:User[]|sql:Error?|string{
+    resource function get users/[int id]() returns database:User|sql:Error?|database:UserNotFound{
         io:println("[SERVICE] Call to getUsersById fuction");
-        database:User[]|sql:Error? result = database:getUsersById(id);
+        database:User|sql:Error?|string result = database:getUsersById(id);
 
-        if result.count() == 0 {
+        if result is string {
             io:println("[SERVICE] User Array is empty");
-            return result;
+            return {body: {message: "User Not Found"}};
         }else if result is sql:Error {
             io:println("[SERVICE] Error occured");
             return result;
+        }else {
+            io:println("[SERVICE] Return Result", result);
+            return result;   
         }
-        
-
-        io:println("[SERVICE] Return Result", result);
-        return result;
         
     }
 
@@ -52,7 +51,6 @@ service /manageUser on httpListener{
             io:println("[SERVICE] Return Result Successfilly!");
             return user;
         }
-        
     }
 
 
@@ -70,15 +68,17 @@ service /manageUser on httpListener{
         }
     }
 
-    resource function delete users/[int ID]/delete() returns string|error?{
+    resource function delete users/[int ID]/delete() returns string|error?|database:UserNotFound|database:User{
         io:println("[SERVICE] Call to deleteUser fuction");
-        sql:ExecutionResult|error? result = database:deleteUser(ID);
+        database:User|error?|string result = database:deleteUser(ID);
 
-        if result is sql:ExecutionResult{
-            io:println("[SERVICE] Return Result Successfilly!");
-            return "Deleted Successfully!";
-        }else {
+        if result is string {
+            io:println("User Not Found!");
+            return {body: { message: "User Not Found"}};
+        }else if result is error {
             io:println("[SERVICE] Error Occured");
+            return result;
+        }else {
             return result;
         }
     }
