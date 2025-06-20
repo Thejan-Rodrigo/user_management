@@ -8,6 +8,19 @@ import user_management.database;
 
 listener http:Listener httpListener = new (8080);
 
+@http:ServiceConfig {
+    cors: {
+        //allowOrigins: ["http://localhost:3000"],
+        allowOrigins: ["*"],  // Allow requests from any origin
+        allowMethods: ["GET", "POST", "PUT", "DELETE"],  // Specify allowed methods
+        allowHeaders: ["Content-Type", "Authorization"],  // Specify allowed headers
+        allowCredentials: false,
+        //allowHeaders: ["CORELATION_ID"],
+        exposeHeaders: ["X-CUSTOM-HEADER"],
+        maxAge: 84900
+    }
+}
+
 service /manageUser on httpListener{
     resource function get users/[int id]() returns database:User|sql:Error?|database:UserNotFound{
         io:println("[SERVICE] Call to getUsersById fuction");
