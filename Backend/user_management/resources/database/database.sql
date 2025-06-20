@@ -5,5 +5,5 @@ CREATE TABLE `user` (
   `FirstName` varchar(100) NOT NULL,
   `LastName` varchar(100) NOT NULL,
   `Age` int NOT NULL,
-  PRIMARY KEY (`sample_collection_id`)
+  PRIMARY KEY (`ID`)
 );

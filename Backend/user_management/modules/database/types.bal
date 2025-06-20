@@ -28,3 +28,11 @@ public type UserNotFound record {|
         string message;
     }body;
 |};
+
+public type UserExist record {|
+    *http:Conflict;
+
+    record {
+        string message;
+    }body;
+|};

@@ -39,15 +39,17 @@ service /manageUser on httpListener{
         return result;
     }
 
-    resource function post users/insert(@http:Payload database:User user) returns database:User|error?{
+    resource function post users/insert(@http:Payload database:User user) returns database:User|error?|database:UserExist{
         io:println("[SERVICE] Call to inserUser fuction");
-        string|error? result = database:inserUser(user);
+        database:User|string|error? result = database:inserUser(user);
 
         
         if result is error{
             io:println("[SERVICE] Error Occured");
             return result;
-        }else {
+        }else if result is database:User {
+            return {body: {message: "User already existing."}};
+        } {
             io:println("[SERVICE] Return Result Successfilly!");
             return user;
         }
