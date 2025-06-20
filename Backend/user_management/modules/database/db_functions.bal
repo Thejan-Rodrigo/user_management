@@ -3,7 +3,6 @@ import ballerinax/mysql.driver as _;
 import ballerina/sql;
 import ballerina/io;
 
-
 public function getUsersById(int Id) returns User|sql:Error?|string{
     stream<User, sql:Error?> result = dbClient->query(getUsersByIdQuery(Id));
     User[] users = [];
