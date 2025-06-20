@@ -30,7 +30,7 @@ service /manageUser on httpListener{
     // Get user by id
     // inputs -> User Id
     // returns -> User data or SQL error or User not found error
-    resource function get users/[int id]() returns database:User|sql:Error?|database:UserNotFound{
+    resource function get users/[int id]() returns database:User|sql:Error?|UserNotFound{
         io:println("[SERVICE] Call to getUsersById fuction");
         // Call to getUserById fuction
         database:User|sql:Error?|string result = database:getUsersById(id);
@@ -72,7 +72,7 @@ service /manageUser on httpListener{
     // Post User
     // inputs -> User Data
     // returns -> User data or SQL error or User Exists error
-    resource function post users/insert(@http:Payload database:User user) returns database:User|error?|database:UserExist{
+    resource function post users/insert(@http:Payload database:User user) returns database:User|error?|UserExist{
         io:println("[SERVICE] Call to inserUser fuction");
         //Call to the insertUser function
         database:User|string|error? result = database:inserUser(user);
@@ -96,16 +96,18 @@ service /manageUser on httpListener{
     // Update User
     // inputs -> User Data
     // returns -> User data or SQL error
-    resource function put users/[int ID]/update(@http:Payload database:UpdateUser user) returns database:User|error?{
+    resource function put users/[int ID]/update(@http:Payload database:UpdateUser user) returns database:User|error?|UserNotFound{
         io:println("[SERVICE] Call to updateUser fuction");
         //Call to the updateUser function
-        sql:ExecutionResult|error? result = database:updateUser(user, ID);
+        sql:ExecutionResult|error?|string result = database:updateUser(user, ID);
 
         if result is sql:ExecutionResult{
             //if successufully update return the updated data
             io:println("[SERVICE] Return Result Successfilly!");
             database:User response = {ID: ID, FristName: user.FristName, LastName: user.LastName, Age: user.Age};
             return response;
+        }else if result is string {
+            return {body: {message: "User Not Found"}};
         }else {
             //If it'a a sql error return that
             io:println("[SERVICE] Error Occured");
@@ -116,7 +118,7 @@ service /manageUser on httpListener{
     // Delete User
     // inputs -> User Id
     // returns -> User data or SQL error or User not found error
-    resource function delete users/[int ID]/delete() returns string|error?|database:UserNotFound|database:User{
+    resource function delete users/[int ID]/delete() returns string|error?|UserNotFound|database:User{
         io:println("[SERVICE] Call to deleteUser fuction");
         //Call to the deleteUser function
         database:User|error?|string result = database:deleteUser(ID);

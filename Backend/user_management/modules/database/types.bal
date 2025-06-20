@@ -1,4 +1,7 @@
-import ballerina/http;
+// import ballerina/http;
+//To Store the all the type for get request data and return responce data 
+
+//Type for store database config data
 type DatabaseConfig record {|
     int port;
     string host;
@@ -8,6 +11,7 @@ type DatabaseConfig record {|
     int maxOpenConnections;
 |};
 
+//Type for get User and return user
 public type User record {|
     int ID;
     string FristName;
@@ -15,24 +19,9 @@ public type User record {|
     int Age;
 |};
 
+//Type for update the user without the id
 public type UpdateUser record {|
     string FristName;
     string LastName;
     int Age;
-|};
-
-public type UserNotFound record {|
-    *http:NotFound;
-
-    record {
-        string message;
-    }body;
-|};
-
-public type UserExist record {|
-    *http:Conflict;
-
-    record {
-        string message;
-    }body;
 |};
