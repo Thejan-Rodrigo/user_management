@@ -1,0 +1,98 @@
+/* From Uiverse.io by EmmaxPlay */ 
+.card {
+ width: 400px;
+ height: 150px;
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 50px;
+ background-color: #F8FBFE;
+ border-radius: 8px;
+ z-index: 1;
+}
+
+.tools {
+ display: flex;
+ align-items: center;
+ padding: 9px;
+}
+
+.circle {
+ padding: 0 4px;
+}
+
+.box {
+ display: inline-block;
+ align-items: center;
+ width: 10px;
+ height: 10px;
+ padding: 1px;
+ border-radius: 50%;
+}
+
+.card__content{
+    padding-left: 10px;
+}
+
+.get_text{
+    color: #b7babe;
+    font-weight:bold;
+}
+
+.red {
+ background-color: #ff605c;
+}
+
+.yellow {
+ background-color: #ffbd44;
+}
+
+.green {
+ background-color: #00ca4e;
+}
+
+/* From Uiverse.io by SteveBloX */ 
+button {
+  width: 70px;
+  height: 35px;
+  border: 3px solid #315cfd;
+  border-radius: 45px;
+  transition: all 0.3s;
+  cursor: pointer;
+  background: white;
+  font-size: 0.8em;
+  font-weight: 550;
+}
+
+button:hover {
+  background: #315cfd;
+  color: white;
+  font-size: 1.0em;
+}
+
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 600px;
+  margin-left: 300px;
+  margin-top: 35px;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){
+    background-color: #9f9f9f;
+    color: black;
+}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #ffffff;
+  color: black;
+}
