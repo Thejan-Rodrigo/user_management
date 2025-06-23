@@ -14,14 +14,14 @@ type DatabaseConfig record {|
 //Type for get User and return user
 public type User record {|
     int ID;
-    string FristName;
+    string FirstName;
     string LastName;
     int Age;
 |};
 
 //Type for update the user without the id
 public type UpdateUser record {|
-    string FristName;
+    string FirstName;
     string LastName;
     int Age;
 |};

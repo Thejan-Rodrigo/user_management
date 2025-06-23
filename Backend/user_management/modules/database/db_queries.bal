@@ -14,13 +14,13 @@ function getUsersByIdQuery(int Id) returns sql:ParameterizedQuery{
 
 //Query for insert a new user for the database 
 function inserUserQuery(User user) returns sql:ParameterizedQuery{
-    sql:ParameterizedQuery query = `INSERT INTO users(ID, FristName, LastName, Age) VALUE (${user.ID}, ${user.FristName}, ${user.LastName}, ${user.Age})`;
+    sql:ParameterizedQuery query = `INSERT INTO users(ID, FirstName, LastName, Age) VALUE (${user.ID}, ${user.FirstName}, ${user.LastName}, ${user.Age})`;
     return query;
 }
 
 //Query for update a specific user by id
 function updateUserQuery(UpdateUser user, int ID) returns sql:ParameterizedQuery{
-    sql:ParameterizedQuery query = `UPDATE users SET FristName = ${user.FristName}, LastName = ${user.LastName}, Age = ${user.Age} WHERE ID = ${ID}`;
+    sql:ParameterizedQuery query = `UPDATE users SET FristName = ${user.FirstName}, LastName = ${user.LastName}, Age = ${user.Age} WHERE ID = ${ID}`;
     return query;
 }
 

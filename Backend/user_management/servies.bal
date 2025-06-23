@@ -72,10 +72,11 @@ service /manageUser on httpListener{
     // Post User
     // inputs -> User Data
     // returns -> User data or SQL error or User Exists error
-    resource function post users/insert(@http:Payload database:User user) returns database:User|error?|UserExist{
+    resource function post users/insert(@http:Payload Formdata user) returns database:User|error?|UserExist{
         io:println("[SERVICE] Call to inserUser fuction");
+        io:println(user);
         //Call to the insertUser function
-        database:User|string|error? result = database:inserUser(user);
+        database:User|string|error? result = database:inserUser(user.formData);
 
         
         if result is error{
@@ -88,7 +89,7 @@ service /manageUser on httpListener{
         } {
             io:println("[SERVICE] Return Result Successfilly!");
             //If not retun a inserted user
-            return user;
+            return user.formData;
         }
     }
 
@@ -104,7 +105,7 @@ service /manageUser on httpListener{
         if result is sql:ExecutionResult{
             //if successufully update return the updated data
             io:println("[SERVICE] Return Result Successfilly!");
-            database:User response = {ID: ID, FristName: user.FristName, LastName: user.LastName, Age: user.Age};
+            database:User response = {ID: ID, FirstName: user.FirstName, LastName: user.LastName, Age: user.Age};
             return response;
         }else if result is string {
             return {body: {message: "User Not Found"}};
