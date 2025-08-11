@@ -4,7 +4,7 @@ HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Fri, 20 Jun 2025 15:12:24 +0530
+date: Mon, 23 Jun 2025 10:28:14 +0530
 content-encoding: gzip
 content-length: 139
 ###
@@ -14,7 +14,7 @@ HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Fri, 20 Jun 2025 15:12:43 +0530
+date: Mon, 23 Jun 2025 10:28:20 +0530
 content-encoding: gzip
 content-length: 77
 ###
@@ -23,7 +23,7 @@ Content-Type: application/json
 
 {
     "ID" : 6, 
-    "FristName" : "Achira",
+    "FirstName" : "Achira",
     "LastName" : "Manathunga", 
     "Age" : 2
 
@@ -33,7 +33,7 @@ HTTP/1.1 201  - Created
 content-type: application/json
 connection: close
 server: ballerina
-date: Fri, 20 Jun 2025 15:13:06 +0530
+date: Mon, 23 Jun 2025 10:30:02 +0530
 content-encoding: gzip
 content-length: 78
 ###
@@ -51,7 +51,7 @@ HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Fri, 20 Jun 2025 15:13:10 +0530
+date: Fri, 20 Jun 2025 11:02:07 +0530
 content-encoding: gzip
 content-length: 79
 ###
@@ -61,6 +61,6 @@ HTTP/1.1 200  - OK
 content-type: application/json
 connection: close
 server: ballerina
-date: Fri, 20 Jun 2025 15:13:13 +0530
+date: Fri, 20 Jun 2025 11:02:48 +0530
 content-encoding: gzip
-content-length: 79
+content-length: 78
