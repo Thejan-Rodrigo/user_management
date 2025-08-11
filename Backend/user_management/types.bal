@@ -1,4 +1,5 @@
 import ballerina/http;
+import user_management.database;
 //Type for return user not found massage
 public type UserNotFound record {|
     *http:NotFound;
@@ -15,4 +16,8 @@ public type UserExist record {|
     record {
         string message;
     }body;
+|};
+
+public type Formdata record {|
+    database:User formData;
 |};
