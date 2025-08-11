@@ -11,12 +11,10 @@ listener http:Listener httpListener = new (8080);
 // Update servies configs to allow all Origins
 @http:ServiceConfig {
     cors: {
-        //allowOrigins: ["http://localhost:3000"],
         allowOrigins: ["*"], // Allow requests from any origin
         allowMethods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods
         allowHeaders: ["Content-Type", "Authorization"], // Specify allowed headers
         allowCredentials: false,
-        //allowHeaders: ["CORELATION_ID"],
         exposeHeaders: ["X-CUSTOM-HEADER"],
         maxAge: 84900
     }
