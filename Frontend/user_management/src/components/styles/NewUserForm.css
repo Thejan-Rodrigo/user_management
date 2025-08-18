@@ -10,10 +10,15 @@
     gap: 20px;
     box-sizing: border-box;
     border-radius: 10px;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 6px rgba(0, 0, 0, 0.15);
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
+    transition: box-shadow 0.3s ease;
+}
+
+.form-container:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .form-container button:active {
@@ -24,6 +29,8 @@
     text-align: center;
     font-weight: 600;
     font-size: 18px;
+    color: #1778f2;
+    letter-spacing: 0.5px;
 }
 
 .form-container .form {
@@ -40,23 +47,31 @@
 .form-container .form-group label {
     display: block;
     margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
 }
 
 .form-container .form-group input {
-    width: 300px;
+    width: 100%;
     padding: 12px 16px;
     border-radius: 6px;
     font-family: inherit;
     border: 1px solid #ccc;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fafafa;
 }
 
 .form-container .form-group input::placeholder {
-    opacity: 0.5;
+    opacity: 0.6;
+    color: #888;
 }
 
-.form-container .form-group input:focus {
+.form-container .form-group input:focus,
+.form-container .form-group input:focus-visible {
     outline: none;
     border-color: #1778f2;
+    box-shadow: 0 0 0 3px rgba(23, 120, 242, 0.15);
+    background-color: #fff;
 }
 
 .form-container .form-submit-btn {
@@ -74,21 +89,26 @@
     margin: 12px 0;
     cursor: pointer;
     border-radius: 6px;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .form-container .form-submit-btn:hover {
     background-color: #313131;
+    transform: translateY(-1px);
 }
 
 .form-container .link {
     color: #1778f2;
     text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
 .form-container .signup-link {
     align-self: center;
     font-weight: 500;
+    font-size: 13px;
+    color: #555;
 }
 
 .form-container .signup-link .link {
@@ -97,4 +117,5 @@
 
 .form-container .link:hover {
     text-decoration: underline;
+    color: #125ecf;
 }
