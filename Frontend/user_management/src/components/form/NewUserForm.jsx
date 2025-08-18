@@ -32,7 +32,6 @@ function NewUserForm() {
         console.log(formData);
         console.log(idNum);
         console.log(age);
-        console.log(typeof (formData.ID));
         console.log(formData);
         console.log(`ID:${idNum}, FirstName:${formData.FirstName}, LastName:${formData.LastName}, Age:${age}`);
         const res = await axios.post("http://localhost:8080/manageUser/users/insert", {
