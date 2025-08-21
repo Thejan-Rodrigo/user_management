@@ -32,7 +32,7 @@ function NewUserForm() {
         console.log(age);
         console.log(formData);
         console.log(`ID:${idNum}, FirstName:${formData.FirstName}, LastName:${formData.LastName}, Age:${age}`);
-        const res = await axios.post("http://localhost:8080/manageUser/users/insert", {
+        const res = await axios.post(`${REACT_APP_BACKEND_BASE_URL}/manageUser/users/insert`, {
             formData
         });
         console.log(res.data);
