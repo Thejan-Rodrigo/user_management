@@ -19,8 +19,6 @@ function NewUserForm() {
     }
 
     const handleSubmit = async () => {
-        console.log(formData.ID);
-        console.log(formData.Age);
         const idNum = parseInt(formData.ID, 10);
         const age = parseInt(formData.Age, 10);
         setFormData(prev => ({
