@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "../styles/NewUserForm.css";
 import axios from 'axios';
+import {ServiceBaseUrl} from "../../config/config.ts";
 function NewUserForm() {
     const [formData, setFormData] = useState({
         ID: 0,
@@ -32,7 +33,7 @@ function NewUserForm() {
         console.log(age);
         console.log(formData);
         console.log(`ID:${idNum}, FirstName:${formData.FirstName}, LastName:${formData.LastName}, Age:${age}`);
-        const res = await axios.post(`${REACT_APP_BACKEND_BASE_URL}/manageUser/users/insert`, {
+        const res = await axios.post(`${ServiceBaseUrl}/manageUser/users/insert`, {
             formData
         });
         console.log(res.data);
